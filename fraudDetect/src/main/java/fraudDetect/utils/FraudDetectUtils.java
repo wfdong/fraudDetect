@@ -19,7 +19,7 @@ public class FraudDetectUtils {
 		if (null == record) {
 			return false;
 		}
-		String[] recordItems = record.split(", ");
+		String[] recordItems = record.split(",");
 		if (recordItems != null && recordItems.length == 3 && isValidDateFormat(recordItems[1])
 				&& parseDateTime(recordItems[1]) != null && parseDateTime(recordItems[1]).isBefore(LocalDateTime.now())
 				&& isNumeric(recordItems[2])) {

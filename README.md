@@ -16,6 +16,11 @@ Maven (version>=3.6.3)
 
 mvn clean install
 
+Or
+
+mvn package
+
+
 It will run all the test cases compile class files and build a jar file in target/ directory (jar name: fraudDetect-0.0.1-SNAPSHOT.jar)
 
 
@@ -31,3 +36,7 @@ If you want to test on another file, just replace the parameters in the tail:
 
 java -jar target/fraudDetect-0.0.1-SNAPSHOT.jar newThreshold newFile
 
+
+
+
+(Note: As my dev env is Mac platform, have not tested the real "CVS" file that exported from a Windows excel, so if some compatibility issues happened with a real CSV file exported from Microsoft Excel please copy the content into an txt file and try to run it again.)

@@ -24,14 +24,14 @@ public class FraudDetectUtilsTest {
 	
 	@Test
 	public void FraudDetectUtilsTest_isRightRecord() {
-		assertEquals(true, FraudDetectUtils.isRightRecord("10d7ce2f43e35fa57d1bbf8b1e2, 2014-04-29T13:15:54, 10.00"));
-		assertEquals(true, FraudDetectUtils.isRightRecord("10d7ce2f43e35fa57d1bbf8b1e2, 2014-04-29T13:15:54, 10000.00"));
-		assertEquals(true, FraudDetectUtils.isRightRecord("10d7ce2f43e35fa57d1bbf8b1e2, 2020-04-29T13:15:54, 13.54"));
-		assertEquals(false, FraudDetectUtils.isRightRecord("10d7ce2f43e35fa57d1bbf8b1e2, 2014-04-29T13:15:54,"));
-		assertEquals(false, FraudDetectUtils.isRightRecord("10d7ce2f43e35fa57d1bbf8b1e2, 10.00"));
-		assertEquals(false, FraudDetectUtils.isRightRecord("2014-04-29T13:15:54, 10.00"));
-		assertEquals(false, FraudDetectUtils.isRightRecord("10d7ce2f43e35fa57d1bbf8b1e2, 2048-04-29T13:15:54, 10.00"));
-		assertEquals(false, FraudDetectUtils.isRightRecord("10d7ce2f43e35fa57d1bbf8b1e2, 2014-04-29T33:15:54, 10.00"));
+		assertEquals(true, FraudDetectUtils.isRightRecord("10d7ce2f43e35fa57d1bbf8b1e2,2014-04-29T13:15:54,10.00"));
+		assertEquals(true, FraudDetectUtils.isRightRecord("10d7ce2f43e35fa57d1bbf8b1e2,2014-04-29T13:15:54,10000.00"));
+		assertEquals(true, FraudDetectUtils.isRightRecord("10d7ce2f43e35fa57d1bbf8b1e2,2020-04-29T13:15:54,13.54"));
+		assertEquals(false, FraudDetectUtils.isRightRecord("10d7ce2f43e35fa57d1bbf8b1e2,2014-04-29T13:15:54,"));
+		assertEquals(false, FraudDetectUtils.isRightRecord("10d7ce2f43e35fa57d1bbf8b1e2,10.00"));
+		assertEquals(false, FraudDetectUtils.isRightRecord("2014-04-29T13:15:54,10.00"));
+		assertEquals(false, FraudDetectUtils.isRightRecord("10d7ce2f43e35fa57d1bbf8b1e2,2048-04-29T13:15:54,10.00"));
+		assertEquals(false, FraudDetectUtils.isRightRecord("10d7ce2f43e35fa57d1bbf8b1e2,2014-04-29T33:15:54,10.00"));
 	}
 	
 	@Test

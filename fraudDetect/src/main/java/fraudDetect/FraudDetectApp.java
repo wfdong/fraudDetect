@@ -62,12 +62,14 @@ public class FraudDetectApp {
 			return transactions;
 		}
 		File file = new File(filePath);
+		Scanner sc = null;
 		try {
-			Scanner sc = new Scanner(file);
+			sc = new Scanner(file);
 			while (sc.hasNextLine()) {
 				String currentLine = sc.nextLine();
-				if (FraudDetectUtils.isRightRecord(currentLine)) {
-					String[] recordItems = currentLine.split(", ");
+				String trimedLine = currentLine.trim().replace(" ", "");
+				if (FraudDetectUtils.isRightRecord(trimedLine)) {
+					String[] recordItems = trimedLine.split(",");
 					String cardNumberHashCode = recordItems[0];
 					String timeStr = recordItems[1];
 					String amount = recordItems[2];
@@ -77,6 +79,10 @@ public class FraudDetectApp {
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+		} finally {
+			if (null != sc) {
+				sc.close();
+			}
 		}
 		return transactions;
 	}
