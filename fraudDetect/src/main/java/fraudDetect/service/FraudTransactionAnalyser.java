@@ -1,5 +1,6 @@
 package fraudDetect.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fraudDetect.model.FraudRecord;
@@ -11,7 +12,18 @@ import fraudDetect.model.Transaction;
  */
 public class FraudTransactionAnalyser {
 
-	public List<FraudRecord> fraudAnalysis(List<Transaction> trasactions, double threshold) {
-		return null;
+	private double thresHold;
+	
+	public List<FraudRecord> fraudAnalysis(List<Transaction> transactions) {
+		List<FraudRecord> records = new ArrayList<FraudRecord>();
+		return records;
+	}
+	
+	public double getThresHold() {
+		return thresHold;
+	}
+
+	public void setThresHold(double thresHold) {
+		this.thresHold = thresHold;
 	}
 }

@@ -18,14 +18,12 @@ import fraudDetect.model.Transaction;
 public class FraudTransactionAnalyserTest {
 
 	static List<Transaction> trasactions;
-	static double threshold;
 	static FraudTransactionAnalyser fraudTransactionAnalyser;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() {
 		fraudTransactionAnalyser = new FraudTransactionAnalyser();
 		trasactions = new ArrayList<Transaction>();
-		threshold = 0;
 	}
 	
 	@Before
@@ -64,22 +62,22 @@ public class FraudTransactionAnalyserTest {
 	
 	@Test
 	public void FraudTransactionAnalyserTest_normal1() {
-		threshold = 5;
-		List<FraudRecord> fraudRecords1 = fraudTransactionAnalyser.fraudAnalysis(trasactions, threshold);
+		fraudTransactionAnalyser.setThresHold(5);
+		List<FraudRecord> fraudRecords1 = fraudTransactionAnalyser.fraudAnalysis(trasactions);
 		assertEquals(3, fraudRecords1.size());
 	}
 	
 	@Test
 	public void FraudTransactionAnalyserTest_normal2() {
-		threshold = 35;
-		List<FraudRecord> fraudRecords2 = fraudTransactionAnalyser.fraudAnalysis(trasactions, threshold);
+		fraudTransactionAnalyser.setThresHold(35);
+		List<FraudRecord> fraudRecords2 = fraudTransactionAnalyser.fraudAnalysis(trasactions);
 		assertEquals(2, fraudRecords2.size());
 	}
 	
 	@Test
 	public void FraudTransactionAnalyserTest_normal3() {
-		threshold = 45;
-		List<FraudRecord> fraudRecords3 = fraudTransactionAnalyser.fraudAnalysis(trasactions, threshold);
+		fraudTransactionAnalyser.setThresHold(45);
+		List<FraudRecord> fraudRecords3 = fraudTransactionAnalyser.fraudAnalysis(trasactions);
 		assertEquals(1, fraudRecords3.size());
 		assertEquals("10d7ce2f43e35fa57d1bbf8b1e2", fraudRecords3.get(0).getCardNumberHashCode());
 		assertEquals(50, fraudRecords3.get(0).getTotalAmount());
@@ -91,15 +89,15 @@ public class FraudTransactionAnalyserTest {
 	
 	@Test
 	public void FraudTransactionAnalyserTest_normal4() {
-		threshold = 55;
-		List<FraudRecord> fraudRecords4 = fraudTransactionAnalyser.fraudAnalysis(trasactions, threshold);
+		fraudTransactionAnalyser.setThresHold(55);
+		List<FraudRecord> fraudRecords4 = fraudTransactionAnalyser.fraudAnalysis(trasactions);
 		assertEquals(0, fraudRecords4.size());
 	}
 	
 	@Test
 	public void FraudTransactionAnalyserTest_abnormal5() {
-		threshold = 55;
-		List<FraudRecord> fraudRecords4 = fraudTransactionAnalyser.fraudAnalysis(null, threshold);
+		fraudTransactionAnalyser.setThresHold(55);
+		List<FraudRecord> fraudRecords4 = fraudTransactionAnalyser.fraudAnalysis(null);
 		assertEquals(null, fraudRecords4);
 	}
 }

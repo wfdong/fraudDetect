@@ -40,4 +40,18 @@ public class FraudDetectUtilsTest {
 		assertEquals(LocalDateTime.parse("2020-04-29T13:15:54"), FraudDetectUtils.parseDateTime("2020-04-29T13:15:54"));
 	}
 	
+	@Test
+	public void FraudDetectUtilsTest_isNumeric() {
+		assertEquals(true, FraudDetectUtils.isNumeric("10"));
+		assertEquals(true, FraudDetectUtils.isNumeric("10.34"));
+		assertEquals(false, FraudDetectUtils.isNumeric("10sdf"));
+	}
+	
+	@Test
+	public void FraudDetectUtilsTest_isValidDateFormat() {
+		assertEquals(true, FraudDetectUtils.isValidDateFormat("2014-04-29T13:15:54"));
+		assertEquals(false, FraudDetectUtils.isValidDateFormat("2014/04/29T13:15:54"));
+		assertEquals(false, FraudDetectUtils.isValidDateFormat("2014-04-29"));
+	}
+	
 }
