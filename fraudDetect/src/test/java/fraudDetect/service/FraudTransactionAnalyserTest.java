@@ -80,11 +80,7 @@ public class FraudTransactionAnalyserTest {
 		List<FraudRecord> fraudRecords3 = fraudTransactionAnalyser.fraudAnalysis(trasactions);
 		assertEquals(1, fraudRecords3.size());
 		assertEquals("10d7ce2f43e35fa57d1bbf8b1e2", fraudRecords3.get(0).getCardNumberHashCode());
-		assertEquals(50, fraudRecords3.get(0).getTotalAmount());
-		assertEquals(5, fraudRecords3.get(0).getTransactionNums());
 		assertEquals(LocalDate.parse("2014-04-29"), fraudRecords3.get(0).getEventDate());
-		assertEquals(LocalDateTime.parse("2014-04-29T13:15:54"), fraudRecords3.get(0).getStartTime());
-		assertEquals(LocalDateTime.parse("2014-04-29T13:22:54"), fraudRecords3.get(0).getEndTime());
 	}
 	
 	@Test
@@ -98,6 +94,6 @@ public class FraudTransactionAnalyserTest {
 	public void FraudTransactionAnalyserTest_abnormal5() {
 		fraudTransactionAnalyser.setThresHold(55);
 		List<FraudRecord> fraudRecords4 = fraudTransactionAnalyser.fraudAnalysis(null);
-		assertEquals(null, fraudRecords4);
+		assertEquals(0, fraudRecords4.size());
 	}
 }

@@ -34,7 +34,6 @@ public class FraudDectectAppTest {
 		List<FraudRecord> fraudRecords = fraudDetectApp.process(140, "./src/test/creditCardTransactionsTestFile1.csv");
 		assertEquals(1, fraudRecords.size());
 		assertEquals("10d7ce2f43e35fa57d1bbf8b1e5", fraudRecords.get(0).getCardNumberHashCode());
-		assertEquals(150, fraudRecords.get(0).getTotalAmount());
 		assertEquals(LocalDate.parse("2014-04-29"), fraudRecords.get(0).getEventDate());
 	}
 	
@@ -58,7 +57,6 @@ public class FraudDectectAppTest {
 		List<FraudRecord> fraudRecords = fraudDetectApp.process(30, "./src/test/creditCardTransactionsTestFile2.csv");
 		assertEquals(1, fraudRecords.size());
 		assertEquals("10d7ce2f43e35fa57d1bbf8b1e2", fraudRecords.get(0).getCardNumberHashCode());
-		assertEquals(40, fraudRecords.get(0).getTotalAmount());
 		assertEquals(LocalDate.parse("2014-04-29"), fraudRecords.get(0).getEventDate());
 	}
 	
